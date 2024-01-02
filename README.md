@@ -1,3 +1,7 @@
+Developed by: NANDHIKA P
+
+RegisterNumber:  212223040125
+
 # Exp-6-Synchornous-counters - up counter and down counter 
 ### AIM: To implement 4 bit up and down counters and validate  functionality.
 ### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
@@ -43,46 +47,83 @@ As well as counting “up” from zero and increasing or incrementing to some pr
 This type of counter is normally referred to as a Down Counter, (CTD). In a binary or BCD down counter, the count decreases by one for each external clock pulse from some preset value. Special dual purpose IC’s such as the TTL 74LS193 or CMOS CD4510 are 4-bit binary Up or Down counters which have an additional input pin to select either the up or down count mode.
 ![image](https://user-images.githubusercontent.com/36288975/169644844-1a14e123-7228-4ed8-81a9-eb937dff4ac8.png)
 
-
 4-bit Count Down Counter
 ### Procedure
 /* write all the steps invloved */
 
+1.Create a New Project: Open Quartus and create a new project by selecting "File" > "New Project Wizard." Follow the wizard's instructions to set up your project, including specifying the project name, location, and target device (FPGA). 
 
+2.Create a New Design File:
+
+Once the project is created, right-click on the project name in the Project Navigator and select "Add New File." Choose "Verilog HDL File" or "VHDL File," depending on your chosen hardware description language. ⦁ Write the Combinational Logic Code:
+
+Open the newly created Verilog or VHDL file and write the code for your combinational logic. 3.Compile the Project: To compile the project, click on "Processing" > "Start Compilation" in the menu. Quartus will analyze your code, synthesize it into a netlist, and perform optimizations based on your target FPGA device. 4.Analyze and Fix Errors:
+
+If there are any errors or warnings during the compilation process, Quartus will display them in the Messages window. Review and fix any issues in your code if necessary. View the RTL diagram. 5.Verification: Click on "File" > "New" > "Verification/Debugging Files" > "University Program VWF". Once Waveform is created Right Click on the Input/Output Panel > " Insert Node or Bus" > Click on Node Finder > Click On "List" > Select All.
+
+Give the Input Combinations according to the Truth Table and then simulate the Output Waveform.
 
 ### PROGRAM 
-/*
-Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
 
 
+## UP COUNTER :
 
+module EXP_6B(clk,A);
+input clk;
+output reg[2:0]A;
+always @(posedge clk)
+begin
+	A[2]=(((~A[0])&(~A[1]))^A[2]);
+	A[1]=(~A[0])^A[1];
+	A[0]=1^A[0];
+end
+endmodule
 
+## DOWN COUNTER :
 
+module EXP_6B(clk,A);
+input clk;
+output reg[2:0]A;
+always @(posedge clk)
+begin
+	A[2]=(((~A[0])&(~A[1]))^A[2]);
+	A[1]=(~A[0])^A[1];
+	A[0]=1^A[0];
+end
+endmodule
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
 
+## UP COUNTER :
 
+![image](https://github.com/Nandhika05/Exp-7-Synchornous-counters-/assets/154419402/4fd16d3d-f6e0-40d1-ad3a-9af70bdf8063)
 
+## DOWN COUNTER :
 
-
-
-
+![image](https://github.com/Nandhika05/Exp-7-Synchornous-counters-/assets/154419402/8f7a25c3-ec98-4573-a7a2-83dcb5c018e1)
 
 
 ### TIMING DIGRAMS FOR COUNTER  
 
+## UP COUNTER :
 
+![image](https://github.com/Nandhika05/Exp-7-Synchornous-counters-/assets/154419402/40360b78-0a5b-495d-8a08-f1e1e36d400d)
 
+## DOWN COUNTER :
 
+![image](https://github.com/Nandhika05/Exp-7-Synchornous-counters-/assets/154419402/5a3c3e55-38f4-4a2a-acdc-5cbc186c9f04)
 
 ### TRUTH TABLE 
 
+## UP COUNTER :
+
+![image](https://github.com/Nandhika05/Exp-7-Synchornous-counters-/assets/154419402/0a7e78f4-90b5-4117-82f3-bbe84de4e797)
 
 
+## DOWN COUNTER :
 
-
+![image](https://github.com/Nandhika05/Exp-7-Synchornous-counters-/assets/154419402/280e5851-7579-4beb-bb16-a27817f2d79a)
 
 ### RESULTS 
+
+By this we have verified the truth table of 4-bit up-counter using verilog.
