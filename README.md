@@ -69,27 +69,38 @@ Give the Input Combinations according to the Truth Table and then simulate the O
 ## UP COUNTER :
 
 module EXP_6B(clk,A);
+
 input clk;
+
 output reg[2:0]A;
+
 always @(posedge clk)
+
 begin
 	A[2]=(((~A[0])&(~A[1]))^A[2]);
 	A[1]=(~A[0])^A[1];
 	A[0]=1^A[0];
 end
+
 endmodule
 
 ## DOWN COUNTER :
 
 module EXP_6B(clk,A);
+
 input clk;
+
 output reg[2:0]A;
+
 always @(posedge clk)
+
 begin
 	A[2]=(((~A[0])&(~A[1]))^A[2]);
 	A[1]=(~A[0])^A[1];
 	A[0]=1^A[0];
+
 end
+
 endmodule
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
